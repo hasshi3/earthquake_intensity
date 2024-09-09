@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoJSON from GitHub</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="myMap" style="height: 600px;"></div>
+    <script>
+        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+
+        var map = L.map('myMap', {
+            center: [35.1, 136.9],
+            zoom: 6,
+            layers: [osm]
+        });
+
+        var allLayers = L.layerGroup();
+        const repoOwner = 'hasshi3';
+        const repoName = 'GeoJason_Leaflet2';
+
+        // GitHub APIを使用してリポジトリ内の.geojsonファイルを取得
+        fetch(`https://api.github.com/repos/hasshi3/earthquake_intensity/contents`)
+            .then(response => response.json())
+            .then(files => {
+                files.forEach(file => {
+                    if (file.name.endsWith('.geojson')) {
+                        fetch(file.download_url)
+                            .then(response => response.json())
+                            .then(geojson => {
+                                L.geoJSON(geojson, {
+                                    onEachFeature: function(feature, layer) {
+                                        if (feature.properties && feature.properties.station_name) {
+                                            layer.bindPopup(feature.properties.station_name);
+                                        }
+                                    },
+                                    pointToLayer: function(feature, latlng) {
+                                        return L.circleMarker(latlng, styles(feature));
+                                    },
+                                    style: styles
+                                }).addTo(allLayers);
+                            })
+                            .catch(error => console.error('Error loading GeoJSON:', error));
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching file list from GitHub:', error));
+
+        function styles(feature) {
+            let intensityColor;
+            if (feature.properties && feature.properties.intensity) {
+                switch (feature.properties.intensity) {
+                    case "1": intensityColor = "green"; break;
+                    case "2": intensityColor = "yellow"; break;
+                    case "3": intensityColor = "orange"; break;
+                    case "4": intensityColor = "red"; break;
+                    default: intensityColor = "#ff7800"; // デフォルト色
+                }
+            } else {
+                intensityColor = "#ff7800"; // デフォルト色
+            }
+
+            switch (feature.geometry.type) {
+                case "Point": return {
+                    radius: 8,
+                    fillColor: intensityColor,
+                    color: "#000",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.6,
+                };
+                case "LineString": return {
+                    color: "#4f6bdb",
+                    lineCap: 'square',
+                    weight: 5,
+                    opacity: .8
+                };
+                case "Polygon": return {
+                    color: "#34ccea8b",
+                    fillColor: "#ea3483"
+                };
+                default: return {};
+            }
+        }
+
+        var baseMaps = {
+            "OpenStreetMap": osm
+        };
+
+        var overlayMaps = {
+            "All GeoJSON Files": allLayers
+        };
+
+        L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+    </script>
+</body>
+</html>
