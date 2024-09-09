@@ -1,0 +1,90 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "title": "震源・震度に関する情報",
+        "prefecture": "青森県",
+        "city": "八戸市",
+        "station": "八戸市南郷＊",
+        "intensity": "2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "title": "震源・震度に関する情報",
+        "prefecture": "青森県",
+        "city": "青森南部町",
+        "station": "青森南部町苫米地＊",
+        "intensity": "2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "title": "震源・震度に関する情報",
+        "prefecture": "岩手県",
+        "city": "宮古市",
+        "station": "宮古市田老＊",
+        "intensity": "2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "title": "震源・震度に関する情報",
+        "prefecture": "岩手県",
+        "city": "久慈市",
+        "station": "久慈市枝成沢",
+        "intensity": "2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "title": "震源・震度に関する情報",
+        "prefecture": "岩手県",
+        "city": "野田村",
+        "station": "野田村野田＊",
+        "intensity": "2"
+      }
+    }
+  ]
+}
