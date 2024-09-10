@@ -35,6 +35,11 @@
             "震度2": L.layerGroup(),
             "震度3": L.layerGroup(),
             "震度4": L.layerGroup(),
+            "震度5-": L.layerGroup(),
+            "震度5+": L.layerGroup(),
+            "震度6-": L.layerGroup(),
+            "震度6+": L.layerGroup(),
+            "震度7": L.layerGroup()
         };
 
         // レイヤーコントロールを一度だけ初期化
@@ -90,6 +95,11 @@
                     case "2": intensityColor = "yellow"; break;
                     case "3": intensityColor = "orange"; break;
                     case "4": intensityColor = "red"; break;
+                    case "5-": intensityColor = "purple"; break;
+                    case "5+": intensityColor = "darkred"; break;
+                    case "6-": intensityColor = "blue"; break;
+                    case "6+": intensityColor = "black"; break;
+                    case "7": intensityColor = "darkblue"; break;
                     default: intensityColor = "#ff7800"; // デフォルト色
                 }
             } else {
