@@ -21,12 +21,12 @@
             layers: [osm]
         });
 
-        var allLayers = L.layerGroup();
+        var allLayers = L.layerGroup().addTo(map);
         const repoOwner = 'hasshi3';
-        const repoName = 'GeoJason_Leaflet2';
+        const repoName = 'earthquake_intensity';
 
         // GitHub APIを使用してリポジトリ内の.geojsonファイルを取得
-        fetch(`https://api.github.com/repos/hasshi3/earthquake_intensity/contents`)
+        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
                 files.forEach(file => {
@@ -34,7 +34,7 @@
                         fetch(file.download_url)
                             .then(response => response.json())
                             .then(geojson => {
-                                L.geoJSON(geojson, {
+                                const layer = L.geoJSON(geojson, {
                                     onEachFeature: function(feature, layer) {
                                         if (feature.properties && feature.properties.station_name) {
                                             layer.bindPopup(feature.properties.station_name);
@@ -44,7 +44,8 @@
                                         return L.circleMarker(latlng, styles(feature));
                                     },
                                     style: styles
-                                }).addTo(allLayers);
+                                });
+                                allLayers.addLayer(layer);
                             })
                             .catch(error => console.error('Error loading GeoJSON:', error));
                     }
