@@ -21,36 +21,47 @@
             layers: [osm]
         });
 
-        var allLayers = L.layerGroup().addTo(map);
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
+
+        // ベースマップとオーバーレイマップの設定
+        var baseMaps = {
+            "OpenStreetMap": osm
+        };
+
+        var overlayMaps = {};
 
         // GitHub APIを使用してリポジトリ内の.geojsonファイルを取得
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
-                let geojsonPromises = files
+                files
                     .filter(file => file.name.endsWith('.geojson'))
-                    .map(file => fetch(file.download_url).then(response => response.json()));
+                    .forEach(file => {
+                        fetch(file.download_url)
+                            .then(response => response.json())
+                            .then(geojson => {
+                                const layer = L.geoJSON(geojson, {
+                                    onEachFeature: function(feature, layer) {
+                                        if (feature.properties && feature.properties.station_name) {
+                                            layer.bindPopup(feature.properties.station_name);
+                                        }
+                                    },
+                                    pointToLayer: function(feature, latlng) {
+                                        return L.circleMarker(latlng, styles(feature));
+                                    },
+                                    style: styles
+                                });
 
-                Promise.all(geojsonPromises)
-                    .then(geojsons => {
-                        geojsons.forEach(geojson => {
-                            const layer = L.geoJSON(geojson, {
-                                onEachFeature: function(feature, layer) {
-                                    if (feature.properties && feature.properties.station_name) {
-                                        layer.bindPopup(feature.properties.station_name);
-                                    }
-                                },
-                                pointToLayer: function(feature, latlng) {
-                                    return L.circleMarker(latlng, styles(feature));
-                                },
-                                style: styles
-                            });
-                            allLayers.addLayer(layer);
-                        });
-                    })
-                    .catch(error => console.error('Error loading GeoJSON files:', error));
+                                // 各GeoJSONファイルをレイヤーコントロールに追加
+                                overlayMaps[file.name] = layer;
+                                layer.addTo(map);
+                                
+                                // レイヤーコントロールの更新
+                                L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+                            })
+                            .catch(error => console.error('Error loading GeoJSON:', error));
+                    });
             })
             .catch(error => console.error('Error fetching file list from GitHub:', error));
 
@@ -90,16 +101,6 @@
                 default: return {};
             }
         }
-
-        var baseMaps = {
-            "OpenStreetMap": osm
-        };
-
-        var overlayMaps = {
-            "All GeoJSON Files": allLayers
-        };
-
-        L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
     </script>
 </body>
 </html>
