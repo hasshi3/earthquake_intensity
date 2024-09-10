@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.7,
+          31.91
+        ]
+      },
+      "properties": {
+        "area_code": "770",
+        "area_name": "鹿児島県薩摩",
+        "city_code": "4621800",
+        "city_name": "霧島市",
+        "station_code": "4621820",
+        "station_name": "霧島市横川町中ノ",
+        "station_furigana": "きりしましよこがわちょうなかの",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240910-0814"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.83,
+          31.82
+        ]
+      },
+      "properties": {
+        "area_code": "770",
+        "area_name": "鹿児島県薩摩",
+        "city_code": "4621800",
+        "city_name": "霧島市",
+        "station_code": "4621836",
+        "station_name": "霧島市霧島田口",
+        "station_furigana": "きりしましきりしまたぐち",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240910-0814"
+      }
+    }
+  ]
+}

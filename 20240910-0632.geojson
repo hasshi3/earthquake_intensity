@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.01,
+          24.47
+        ]
+      },
+      "properties": {
+        "area_code": "806",
+        "area_name": "沖縄県与那国島",
+        "city_code": "4738200",
+        "city_name": "与那国町",
+        "station_code": "4738200",
+        "station_name": "与那国町祖納",
+        "station_furigana": "よなぐにちょうそない",
+        "pref_name": "沖縄県",
+        "pref_code": 47,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240910-0632"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.95,
+          24.45
+        ]
+      },
+      "properties": {
+        "area_code": "806",
+        "area_name": "沖縄県与那国島",
+        "city_code": "4738200",
+        "city_name": "与那国町",
+        "station_code": "4738202",
+        "station_name": "与那国町久部良",
+        "station_furigana": "よなぐにちょうくぶら",
+        "pref_name": "沖縄県",
+        "pref_code": 47,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240910-0632"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.0,
+          24.47
+        ]
+      },
+      "properties": {
+        "area_code": "806",
+        "area_name": "沖縄県与那国島",
+        "city_code": "4738200",
+        "city_name": "与那国町",
+        "station_code": "4738230",
+        "station_name": "与那国町役場",
+        "station_furigana": "よなぐにちょうやくば",
+        "pref_name": "沖縄県",
+        "pref_code": 47,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240910-0632"
+      }
+    }
+  ]
+}
