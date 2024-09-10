@@ -31,6 +31,9 @@
 
         var overlayMaps = {};
 
+        // レイヤーコントロールを一度だけ初期化
+        var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
         // GitHub APIを使用してリポジトリ内の.geojsonファイルを取得
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
@@ -55,10 +58,8 @@
 
                                 // 各GeoJSONファイルをレイヤーコントロールに追加
                                 overlayMaps[file.name] = layer;
+                                layerControl.addOverlay(layer, file.name);
                                 layer.addTo(map);
-                                
-                                // レイヤーコントロールの更新
-                                L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
                             })
                             .catch(error => console.error('Error loading GeoJSON:', error));
                     });
@@ -104,5 +105,4 @@
     </script>
 </body>
 </html>
-
 
