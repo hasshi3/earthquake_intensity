@@ -1,0 +1,293 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.16,
+          43.08
+        ]
+      },
+      "properties": {
+        "area_code": "161",
+        "area_name": "釧路地方中南部",
+        "city_code": "0166300",
+        "city_name": "浜中町",
+        "station_code": "0166300",
+        "station_name": "浜中町湯沸",
+        "station_furigana": "はまなかちょうとうふつ",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "気象庁",
+        "intensity": "2",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.03,
+          43.13
+        ]
+      },
+      "properties": {
+        "area_code": "161",
+        "area_name": "釧路地方中南部",
+        "city_code": "0166300",
+        "city_name": "浜中町",
+        "station_code": "0166321",
+        "station_name": "浜中町茶内",
+        "station_furigana": "はまなかちょうちゃない",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "2",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.5,
+          43.15
+        ]
+      },
+      "properties": {
+        "area_code": "161",
+        "area_name": "釧路地方中南部",
+        "city_code": "0166400",
+        "city_name": "標茶町",
+        "station_code": "0166421",
+        "station_name": "標茶町塘路",
+        "station_furigana": "しべちゃちょうとうろ",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.6,
+          43.33
+        ]
+      },
+      "properties": {
+        "area_code": "167",
+        "area_name": "根室地方南部",
+        "city_code": "0122300",
+        "city_name": "根室市",
+        "station_code": "0122320",
+        "station_name": "根室市牧の内",
+        "station_furigana": "ねむろしまきのうち",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "2",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.26,
+          43.23
+        ]
+      },
+      "properties": {
+        "area_code": "167",
+        "area_name": "根室地方南部",
+        "city_code": "0122300",
+        "city_name": "根室市",
+        "station_code": "0122321",
+        "station_name": "根室市厚床",
+        "station_furigana": "ねむろしあっとこ",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "2",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.52,
+          43.19
+        ]
+      },
+      "properties": {
+        "area_code": "167",
+        "area_name": "根室地方南部",
+        "city_code": "0122300",
+        "city_name": "根室市",
+        "station_code": "0122322",
+        "station_name": "根室市落石東",
+        "station_furigana": "ねむろしおちいしひがし",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "2",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.8,
+          43.37
+        ]
+      },
+      "properties": {
+        "area_code": "167",
+        "area_name": "根室地方南部",
+        "city_code": "0122300",
+        "city_name": "根室市",
+        "station_code": "0122323",
+        "station_name": "根室市珸瑤瑁",
+        "station_furigana": "ねむろしごようまい",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "2",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.59,
+          43.33
+        ]
+      },
+      "properties": {
+        "area_code": "167",
+        "area_name": "根室地方南部",
+        "city_code": "0122300",
+        "city_name": "根室市",
+        "station_code": "0122300",
+        "station_name": "根室市弥栄",
+        "station_furigana": "ねむろしやさかえ",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.74,
+          43.37
+        ]
+      },
+      "properties": {
+        "area_code": "167",
+        "area_name": "根室地方南部",
+        "city_code": "0122300",
+        "city_name": "根室市",
+        "station_code": "0122301",
+        "station_name": "根室市豊里",
+        "station_furigana": "ねむろしとよさと",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.13,
+          43.66
+        ]
+      },
+      "properties": {
+        "area_code": "165",
+        "area_name": "根室地方北部",
+        "city_code": "0169300",
+        "city_name": "標津町",
+        "station_code": "0169320",
+        "station_name": "標津町北２条",
+        "station_furigana": "しべつちょうきたにじょう",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.12,
+          43.39
+        ]
+      },
+      "properties": {
+        "area_code": "166",
+        "area_name": "根室地方中部",
+        "city_code": "0169100",
+        "city_name": "別海町",
+        "station_code": "0169100",
+        "station_name": "別海町常盤",
+        "station_furigana": "べつかいちょうときわ",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-0104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.28,
+          43.39
+        ]
+      },
+      "properties": {
+        "area_code": "166",
+        "area_name": "根室地方中部",
+        "city_code": "0169100",
+        "city_name": "別海町",
+        "station_code": "0169122",
+        "station_name": "別海町本別海",
+        "station_furigana": "べつかいちょうほんべつかい",
+        "pref_name": "北海道",
+        "pref_code": 1,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240912-0104"
+      }
+    }
+  ]
+}
