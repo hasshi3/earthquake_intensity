@@ -1,0 +1,1205 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.87,
+          36.55
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920100",
+        "city_name": "宇都宮市",
+        "station_code": "0920100",
+        "station_name": "宇都宮市明保野町",
+        "station_furigana": "うつのみやしあけぼのちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "気象庁",
+        "intensity": "2",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.89,
+          36.57
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920100",
+        "city_name": "宇都宮市",
+        "station_code": "0920120",
+        "station_name": "宇都宮市塙田",
+        "station_furigana": "うつのみやしはなわだ",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.88,
+          36.55
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920100",
+        "city_name": "宇都宮市",
+        "station_code": "0920130",
+        "station_name": "宇都宮市旭",
+        "station_furigana": "うつのみやしあさひ",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.9,
+          36.68
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920100",
+        "city_name": "宇都宮市",
+        "station_code": "0920131",
+        "station_name": "宇都宮市中里町",
+        "station_furigana": "うつのみやしなかざとちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.88,
+          36.39
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0921600",
+        "city_name": "下野市",
+        "station_code": "0921633",
+        "station_name": "下野市田中",
+        "station_furigana": "しもつけしたなか",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "2",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.85,
+          36.39
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0921600",
+        "city_name": "下野市",
+        "station_code": "0921634",
+        "station_name": "下野市笹原",
+        "station_furigana": "しもつけしささはら",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74,
+          36.38
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920300",
+        "city_name": "栃木市",
+        "station_code": "0920300",
+        "station_name": "栃木市旭町",
+        "station_furigana": "とちぎしあさひちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.65,
+          36.26
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920300",
+        "city_name": "栃木市",
+        "station_code": "0920332",
+        "station_name": "栃木市藤岡町藤岡",
+        "station_furigana": "とちぎしふじおかまちふじおか",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.75,
+          36.47
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920300",
+        "city_name": "栃木市",
+        "station_code": "0920334",
+        "station_name": "栃木市西方町本城",
+        "station_furigana": "とちぎしにしかたまちほんじょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.66,
+          36.32
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920300",
+        "city_name": "栃木市",
+        "station_code": "0920336",
+        "station_name": "栃木市岩舟町静",
+        "station_furigana": "とちぎしいわふねまちしずか",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.61,
+          36.39
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920400",
+        "city_name": "佐野市",
+        "station_code": "0920420",
+        "station_name": "佐野市中町",
+        "station_furigana": "さのしなかちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.61,
+          36.4
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920400",
+        "city_name": "佐野市",
+        "station_code": "0920434",
+        "station_name": "佐野市葛生東",
+        "station_furigana": "さのしくずうひがし",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.58,
+          36.31
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920400",
+        "city_name": "佐野市",
+        "station_code": "0920435",
+        "station_name": "佐野市高砂町",
+        "station_furigana": "さのしたかさごちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.57,
+          36.38
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920400",
+        "city_name": "佐野市",
+        "station_code": "0920436",
+        "station_name": "佐野市田沼町",
+        "station_furigana": "さのしたぬまちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.77,
+          36.56
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920500",
+        "city_name": "鹿沼市",
+        "station_code": "0920520",
+        "station_name": "鹿沼市晃望台",
+        "station_furigana": "かぬましこうぼうだい",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.8,
+          36.31
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920800",
+        "city_name": "小山市",
+        "station_code": "0920831",
+        "station_name": "小山市中央町",
+        "station_furigana": "おやましちゅうおうちょう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.97,
+          36.39
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0920900",
+        "city_name": "真岡市",
+        "station_code": "0920933",
+        "station_name": "真岡市石島",
+        "station_furigana": "もおかしいしじま",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.91,
+          36.44
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0930100",
+        "city_name": "上三川町",
+        "station_code": "0930130",
+        "station_name": "上三川町しらさぎ",
+        "station_furigana": "かみのかわまちしらさぎ",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.09,
+          36.47
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0934200",
+        "city_name": "益子町",
+        "station_code": "0934200",
+        "station_name": "益子町益子",
+        "station_furigana": "ましこまちましこ",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.81,
+          36.44
+        ]
+      },
+      "properties": {
+        "area_code": "311",
+        "area_name": "栃木県南部",
+        "city_code": "0936100",
+        "city_name": "壬生町",
+        "station_code": "0936131",
+        "station_name": "壬生町壬生甲",
+        "station_furigana": "みぶまちみぶこう",
+        "pref_name": "栃木県",
+        "pref_code": 9,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.36,
+          36.36
+        ]
+      },
+      "properties": {
+        "area_code": "300",
+        "area_name": "茨城県北部",
+        "city_code": "0820100",
+        "city_name": "水戸市",
+        "station_code": "0820132",
+        "station_name": "水戸市内原町",
+        "station_furigana": "みとしうちはらちょう",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.24,
+          36.39
+        ]
+      },
+      "properties": {
+        "area_code": "300",
+        "area_name": "茨城県北部",
+        "city_code": "0821600",
+        "city_name": "笠間市",
+        "station_code": "0821620",
+        "station_name": "笠間市石井",
+        "station_furigana": "かさましいしい",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.25,
+          36.38
+        ]
+      },
+      "properties": {
+        "area_code": "300",
+        "area_name": "茨城県北部",
+        "city_code": "0821600",
+        "city_name": "笠間市",
+        "station_code": "0821634",
+        "station_name": "笠間市笠間",
+        "station_furigana": "かさましかさま",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.41,
+          36.55
+        ]
+      },
+      "properties": {
+        "area_code": "300",
+        "area_name": "茨城県北部",
+        "city_code": "0822500",
+        "city_name": "常陸大宮市",
+        "station_code": "0822521",
+        "station_name": "常陸大宮市北町",
+        "station_furigana": "ひたちおおみやしきたちょう",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.36,
+          36.78
+        ]
+      },
+      "properties": {
+        "area_code": "300",
+        "area_name": "茨城県北部",
+        "city_code": "0836400",
+        "city_name": "大子町",
+        "station_code": "0836430",
+        "station_name": "大子町池田",
+        "station_furigana": "だいごまちいけだ",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.16,
+          36.13
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0820300",
+        "city_name": "土浦市",
+        "station_code": "0820333",
+        "station_name": "土浦市藤沢",
+        "station_furigana": "つちうらしふじさわ",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.87,
+          36.29
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0820700",
+        "city_name": "結城市",
+        "station_code": "0820731",
+        "station_name": "結城市中央町",
+        "station_furigana": "ゆうきしちゅうおうちょう",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.93,
+          36.25
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0822700",
+        "city_name": "筑西市",
+        "station_code": "0822700",
+        "station_name": "筑西市舟生",
+        "station_furigana": "ちくせいしふにゅう",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.03,
+          36.33
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0822700",
+        "city_name": "筑西市",
+        "station_code": "0822733",
+        "station_name": "筑西市門井",
+        "station_furigana": "ちくせいしかどい",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.04,
+          36.25
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0822700",
+        "city_name": "筑西市",
+        "station_code": "0822734",
+        "station_name": "筑西市海老ヶ島",
+        "station_furigana": "ちくせいしえびがしま",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.97,
+          36.3
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0822700",
+        "city_name": "筑西市",
+        "station_code": "0822735",
+        "station_name": "筑西市二木成",
+        "station_furigana": "ちくせいしにぎなり",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.89,
+          36.12
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0822800",
+        "city_name": "坂東市",
+        "station_code": "0822833",
+        "station_name": "坂東市山",
+        "station_furigana": "ばんどうしやま",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.89,
+          36.05
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0822800",
+        "city_name": "坂東市",
+        "station_code": "0822834",
+        "station_name": "坂東市役所",
+        "station_furigana": "ばんどうしやくしょ",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.11,
+          36.36
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0823100",
+        "city_name": "桜川市",
+        "station_code": "0823133",
+        "station_name": "桜川市岩瀬",
+        "station_furigana": "さくらがわしいわせ",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.09,
+          36.27
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0823100",
+        "city_name": "桜川市",
+        "station_code": "0823134",
+        "station_name": "桜川市真壁",
+        "station_furigana": "さくらがわしまかべ",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.79,
+          36.11
+        ]
+      },
+      "properties": {
+        "area_code": "301",
+        "area_name": "茨城県南部",
+        "city_code": "0854600",
+        "city_name": "境町",
+        "station_code": "0854631",
+        "station_name": "境町旭町",
+        "station_furigana": "さかいまちあさひちょう",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.33,
+          36.41
+        ]
+      },
+      "properties": {
+        "area_code": "321",
+        "area_name": "群馬県南部",
+        "city_code": "1020300",
+        "city_name": "桐生市",
+        "station_code": "1020320",
+        "station_name": "桐生市元宿町",
+        "station_furigana": "きりゅうしもとじゅくちょう",
+        "pref_name": "群馬県",
+        "pref_code": 10,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.6,
+          36.22
+        ]
+      },
+      "properties": {
+        "area_code": "321",
+        "area_name": "群馬県南部",
+        "city_code": "1052100",
+        "city_name": "板倉町",
+        "station_code": "1052101",
+        "station_name": "板倉町板倉",
+        "station_furigana": "いたくらまちいたくら",
+        "pref_name": "群馬県",
+        "pref_code": 10,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.53,
+          36.21
+        ]
+      },
+      "properties": {
+        "area_code": "321",
+        "area_name": "群馬県南部",
+        "city_code": "1052200",
+        "city_name": "群馬明和町",
+        "station_code": "1052231",
+        "station_name": "群馬明和町新里",
+        "station_furigana": "ぐんまめいわまちにっさと",
+        "pref_name": "群馬県",
+        "pref_code": 10,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.46,
+          36.25
+        ]
+      },
+      "properties": {
+        "area_code": "321",
+        "area_name": "群馬県南部",
+        "city_code": "1052500",
+        "city_name": "邑楽町",
+        "station_code": "1052531",
+        "station_name": "邑楽町中野",
+        "station_furigana": "おうらまちなかの",
+        "pref_name": "群馬県",
+        "pref_code": 10,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.34,
+          36.12
+        ]
+      },
+      "properties": {
+        "area_code": "330",
+        "area_name": "埼玉県北部",
+        "city_code": "1120200",
+        "city_name": "熊谷市",
+        "station_code": "1120232",
+        "station_name": "熊谷市江南",
+        "station_furigana": "くまがやしこうなん",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.57,
+          36.1
+        ]
+      },
+      "properties": {
+        "area_code": "330",
+        "area_name": "埼玉県北部",
+        "city_code": "1121000",
+        "city_name": "加須市",
+        "station_code": "1121031",
+        "station_name": "加須市騎西",
+        "station_furigana": "かぞしきさい",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.66,
+          36.14
+        ]
+      },
+      "properties": {
+        "area_code": "330",
+        "area_name": "埼玉県北部",
+        "city_code": "1121000",
+        "city_name": "加須市",
+        "station_code": "1121033",
+        "station_name": "加須市大利根",
+        "station_furigana": "かぞしおおとね",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.4,
+          36.04
+        ]
+      },
+      "properties": {
+        "area_code": "330",
+        "area_name": "埼玉県北部",
+        "city_code": "1121200",
+        "city_name": "東松山市",
+        "station_code": "1121230",
+        "station_name": "東松山市松葉町",
+        "station_furigana": "ひがしまつやましまつばちょう",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.67,
+          36.06
+        ]
+      },
+      "properties": {
+        "area_code": "330",
+        "area_name": "埼玉県北部",
+        "city_code": "1123200",
+        "city_name": "久喜市",
+        "station_code": "1123200",
+        "station_name": "久喜市下早見",
+        "station_furigana": "くきししもはやみ",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.67,
+          36.1
+        ]
+      },
+      "properties": {
+        "area_code": "330",
+        "area_name": "埼玉県北部",
+        "city_code": "1123200",
+        "city_name": "久喜市",
+        "station_code": "1123232",
+        "station_name": "久喜市鷲宮",
+        "station_furigana": "くきしわしみや",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.68,
+          36.02
+        ]
+      },
+      "properties": {
+        "area_code": "331",
+        "area_name": "埼玉県南部",
+        "city_code": "1124600",
+        "city_name": "白岡市",
+        "station_code": "1124630",
+        "station_name": "白岡市千駄野",
+        "station_furigana": "しらおかしせんだの",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.72,
+          36.02
+        ]
+      },
+      "properties": {
+        "area_code": "331",
+        "area_name": "埼玉県南部",
+        "city_code": "1144200",
+        "city_name": "宮代町",
+        "station_code": "1144231",
+        "station_name": "宮代町笠原",
+        "station_furigana": "みやしろまちかさはら",
+        "pref_name": "埼玉県",
+        "pref_code": 11,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.87,
+          35.96
+        ]
+      },
+      "properties": {
+        "area_code": "341",
+        "area_name": "千葉県北西部",
+        "city_code": "1220800",
+        "city_name": "野田市",
+        "station_code": "1220832",
+        "station_name": "野田市鶴奉",
+        "station_furigana": "のだしつるほう",
+        "pref_name": "千葉県",
+        "pref_code": 12,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.82,
+          36.03
+        ]
+      },
+      "properties": {
+        "area_code": "341",
+        "area_name": "千葉県北西部",
+        "city_code": "1220800",
+        "city_name": "野田市",
+        "station_code": "1220833",
+        "station_name": "野田市東宝珠花",
+        "station_furigana": "のだしひがしほうしゅばな",
+        "pref_name": "千葉県",
+        "pref_code": 12,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240913-0418"
+      }
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.71,
+          39.07
+        ]
+      },
+      "properties": {
+        "area_code": "211",
+        "area_name": "岩手県沿岸南部",
+        "city_code": "0320300",
+        "city_name": "大船渡市",
+        "station_code": "0320300",
+        "station_name": "大船渡市大船渡町",
+        "station_furigana": "おおふなとしおおふなとちょう",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.66,
+          39.08
+        ]
+      },
+      "properties": {
+        "area_code": "211",
+        "area_name": "岩手県沿岸南部",
+        "city_code": "0320300",
+        "city_name": "大船渡市",
+        "station_code": "0320301",
+        "station_name": "大船渡市猪川町",
+        "station_furigana": "おおふなとしいかわちょう",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.62,
+          39.03
+        ]
+      },
+      "properties": {
+        "area_code": "211",
+        "area_name": "岩手県沿岸南部",
+        "city_code": "0321000",
+        "city_name": "陸前高田市",
+        "station_code": "0321033",
+        "station_name": "陸前高田市高田町",
+        "station_furigana": "りくぜんたかたしたかたちょう",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.58,
+          39.14
+        ]
+      },
+      "properties": {
+        "area_code": "211",
+        "area_name": "岩手県沿岸南部",
+        "city_code": "0344100",
+        "city_name": "住田町",
+        "station_code": "0344131",
+        "station_name": "住田町世田米",
+        "station_furigana": "すみたちょうせたまい",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.33,
+          38.92
+        ]
+      },
+      "properties": {
+        "area_code": "213",
+        "area_name": "岩手県内陸南部",
+        "city_code": "0320900",
+        "city_name": "一関市",
+        "station_code": "0320936",
+        "station_name": "一関市千厩町",
+        "station_furigana": "いちのせきしせんまやちょう",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.44,
+          38.94
+        ]
+      },
+      "properties": {
+        "area_code": "213",
+        "area_name": "岩手県内陸南部",
+        "city_code": "0320900",
+        "city_name": "一関市",
+        "station_code": "0320938",
+        "station_name": "一関市室根町",
+        "station_furigana": "いちのせきしむろねちょう",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.35,
+          38.86
+        ]
+      },
+      "properties": {
+        "area_code": "213",
+        "area_name": "岩手県内陸南部",
+        "city_code": "0320900",
+        "city_name": "一関市",
+        "station_code": "0320939",
+        "station_name": "一関市藤沢町",
+        "station_furigana": "いちのせきしふじさわちょう",
+        "pref_name": "岩手県",
+        "pref_code": 3,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.57,
+          38.88
+        ]
+      },
+      "properties": {
+        "area_code": "220",
+        "area_name": "宮城県北部",
+        "city_code": "0420500",
+        "city_name": "気仙沼市",
+        "station_code": "0420500",
+        "station_name": "気仙沼市赤岩",
+        "station_furigana": "けせんぬましあかいわ",
+        "pref_name": "宮城県",
+        "pref_code": 4,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.57,
+          38.9
+        ]
+      },
+      "properties": {
+        "area_code": "220",
+        "area_name": "宮城県北部",
+        "city_code": "0420500",
+        "city_name": "気仙沼市",
+        "station_code": "0420520",
+        "station_name": "気仙沼市笹が陣",
+        "station_furigana": "けせんぬましささがじん",
+        "pref_name": "宮城県",
+        "pref_code": 4,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.65,
+          38.9
+        ]
+      },
+      "properties": {
+        "area_code": "220",
+        "area_name": "宮城県北部",
+        "city_code": "0420500",
+        "city_name": "気仙沼市",
+        "station_code": "0420530",
+        "station_name": "気仙沼市唐桑町",
+        "station_furigana": "けせんぬましからくわちょう",
+        "pref_name": "宮城県",
+        "pref_code": 4,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.25,
+          38.59
+        ]
+      },
+      "properties": {
+        "area_code": "220",
+        "area_name": "宮城県北部",
+        "city_code": "0421200",
+        "city_name": "登米市",
+        "station_code": "0421222",
+        "station_name": "登米市豊里町",
+        "station_furigana": "とめしとよさとちょう",
+        "pref_name": "宮城県",
+        "pref_code": 4,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.24,
+          38.56
+        ]
+      },
+      "properties": {
+        "area_code": "222",
+        "area_name": "宮城県中部",
+        "city_code": "0420200",
+        "city_name": "石巻市",
+        "station_code": "0420239",
+        "station_name": "石巻市桃生町",
+        "station_furigana": "いしのまきしものうちょう",
+        "pref_name": "宮城県",
+        "pref_code": 4,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240912-2008"
+      }
+    }
+  ]
+}

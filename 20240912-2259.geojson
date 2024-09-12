@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.19,
+          27.09
+        ]
+      },
+      "properties": {
+        "area_code": "359",
+        "area_name": "小笠原",
+        "city_code": "1342100",
+        "city_name": "小笠原村",
+        "station_code": "1342100",
+        "station_name": "小笠原村父島西町",
+        "station_furigana": "おがさわらむらちちじまにしまち",
+        "pref_name": "東京都",
+        "pref_code": 13,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-2259"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.18,
+          27.1
+        ]
+      },
+      "properties": {
+        "area_code": "359",
+        "area_name": "小笠原",
+        "city_code": "1342100",
+        "city_name": "小笠原村",
+        "station_code": "1342101",
+        "station_name": "小笠原村父島三日月山",
+        "station_furigana": "おがさわらむらちちじまみかづきやま",
+        "pref_name": "東京都",
+        "pref_code": 13,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240912-2259"
+      }
+    }
+  ]
+}

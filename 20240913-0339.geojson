@@ -1,0 +1,29 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.65,
+          36.59
+        ]
+      },
+      "properties": {
+        "area_code": "300",
+        "area_name": "茨城県北部",
+        "city_code": "0820200",
+        "city_name": "日立市",
+        "station_code": "0820220",
+        "station_name": "日立市助川小学校",
+        "station_furigana": "ひたちしすけがわしょうがっこう",
+        "pref_name": "茨城県",
+        "pref_code": 8,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240913-0339"
+      }
+    }
+  ]
+}
