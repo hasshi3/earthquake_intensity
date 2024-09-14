@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoJSON from GitHub</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <!-- ここにカスタムCSSを追加 -->
+    <style>
+        .leaflet-control-layers-expanded {
+            max-height: 230px; /* 行の高さに基づいて調整し、正確に10行に収まるように設定 */
+            overflow-y: scroll;
+        }
+    </style>
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
