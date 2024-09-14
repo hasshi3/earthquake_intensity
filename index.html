@@ -25,8 +25,8 @@
         const repoName = 'earthquake_intensity';
         var earthquakes = {};
         var currentEarthquake = null;
-        var intensityLayers = {};
-        var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+
+        var baseLayerControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
@@ -35,43 +35,48 @@
                     fetch(file.download_url).then(response => response.json()).then(geojson => {
                         var earthquakeLayer = L.geoJSON(geojson, {
                             onEachFeature: function(feature, layer) {
-                                if (feature.properties && feature.properties.station_name) {
-                                    layer.bindPopup(feature.properties.station_name);
+                                if (feature.properties) {
+                                    layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
+                                    layer.setStyle(styles(feature));
                                 }
+                            },
+                            pointToLayer: function(feature, latlng) {
+                                return L.circleMarker(latlng, styles(feature));
                             }
                         });
 
-                        earthquakes[file.name] = {
-                            data: earthquakeLayer,
-                            intensities: {}
-                        };
+                        earthquakes[file.name] = earthquakeLayer;
+                        baseLayerControl.addBaseLayer(earthquakeLayer, file.name);
 
-                        geojson.features.forEach(feature => {
-                            const intensity = feature.properties.intensity;
-                            if (!earthquakes[file.name].intensities[intensity]) {
-                                earthquakes[file.name].intensities[intensity] = L.layerGroup();
+                        earthquakeLayer.on('add', function() {
+                            if (currentEarthquake && currentEarthquake !== file.name) {
+                                map.removeLayer(earthquakes[currentEarthquake]);
                             }
-                            earthquakes[file.name].intensities[intensity].addLayer(L.geoJSON(feature));
-                        });
-
-                        earthquakeControl.addBaseLayer(earthquakeLayer, file.name);
-
-                        map.on('overlayadd', function(e) {
-                            if (e.layer === earthquakeLayer) {
-                                if (currentEarthquake) {
-                                    Object.keys(earthquakes[currentEarthquake].intensities).forEach(intensity => {
-                                        map.removeLayer(earthquakes[currentEarthquake].intensities[intensity]);
-                                    });
-                                }
-                                currentEarthquake = file.name;
-                                Object.keys(earthquakes[currentEarthquake].intensities).forEach(intensity => {
-                                    map.addLayer(earthquakes[currentEarthquake].intensities[intensity]);
-                                });
-                            }
+                            currentEarthquake = file.name;
                         });
                     }).catch(error => console.error('Error loading GeoJSON:', error));
                 });
             }).catch(error => console.error('Error fetching file list from GitHub:', error));
+
+        function styles(feature) {
+            return {
+                radius: 8,
+                fillColor: getColor(feature.properties.intensity),
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+        }
+
+        function getColor(intensity) {
+            const colors = {
+                "1": "#00ff00", "2": "#80ff00", "3": "#ffff00",
+                "4": "#ffc800", "5-": "#ff9100", "5+": "#ff0000",
+                "6-": "#c800ff", "6+": "#9100ff", "7": "#6a00ff"
+            };
+            return colors[intensity] || "#ff7800";
+        }
     </script>
 </body>
 </html>
