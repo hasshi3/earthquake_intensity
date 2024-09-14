@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.08,
+          35.36
+        ]
+      },
+      "properties": {
+        "area_code": "361",
+        "area_name": "神奈川県西部",
+        "city_code": "1436400",
+        "city_name": "山北町",
+        "station_code": "1436420",
+        "station_name": "山北町山北",
+        "station_furigana": "やまきたまちやまきた",
+        "pref_name": "神奈川県",
+        "pref_code": 14,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240914-0239"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.95,
+          35.61
+        ]
+      },
+      "properties": {
+        "area_code": "412",
+        "area_name": "山梨県東部・富士五湖",
+        "city_code": "1920600",
+        "city_name": "大月市",
+        "station_code": "1920621",
+        "station_name": "大月市御太刀",
+        "station_furigana": "おおつきしみたち",
+        "pref_name": "山梨県",
+        "pref_code": 19,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240914-0239"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.85,
+          35.52
+        ]
+      },
+      "properties": {
+        "area_code": "412",
+        "area_name": "山梨県東部・富士五湖",
+        "city_code": "1942300",
+        "city_name": "西桂町",
+        "station_code": "1942331",
+        "station_name": "西桂町小沼",
+        "station_furigana": "にしかつらちょうおぬま",
+        "pref_name": "山梨県",
+        "pref_code": 19,
+        "affiliation": "地方公共団体",
+        "intensity": "1",
+        "earthquake_time": "20240914-0239"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.76,
+          35.5
+        ]
+      },
+      "properties": {
+        "area_code": "412",
+        "area_name": "山梨県東部・富士五湖",
+        "city_code": "1943000",
+        "city_name": "富士河口湖町",
+        "station_code": "1943002",
+        "station_name": "富士河口湖町船津",
+        "station_furigana": "ふじかわぐちこまちふなつ",
+        "pref_name": "山梨県",
+        "pref_code": 19,
+        "affiliation": "気象庁",
+        "intensity": "1",
+        "earthquake_time": "20240914-0239"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.92,
+          35.79
+        ]
+      },
+      "properties": {
+        "area_code": "412",
+        "area_name": "山梨県東部・富士五湖",
+        "city_code": "1944300",
+        "city_name": "丹波山村",
+        "station_code": "1944321",
+        "station_name": "丹波山村丹波",
+        "station_furigana": "たばやまむらたば",
+        "pref_name": "山梨県",
+        "pref_code": 19,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240914-0239"
+      }
+    }
+  ]
+}
