@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" "IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoJSON from GitHub</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
@@ -23,10 +23,10 @@
 
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
-        var earthquakes = {};
-        var currentEarthquake = null;
+        var earthquakesByIntensity = {};
+        var currentIntensity = null;
 
-        var baseLayerControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+        var intensityLayerControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
@@ -34,25 +34,27 @@
                 files.filter(file => file.name.endsWith('.geojson')).sort((a, b) => b.name.localeCompare(a.name)).forEach(file => {
                     fetch(file.download_url).then(response => response.json()).then(geojson => {
                         var earthquakeLayer = L.geoJSON(geojson, {
-                            onEachFeature: function(feature, layer) {
-                                if (feature.properties) {
-                                    layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
-                                    layer.setStyle(styles(feature));
-                                }
-                            },
-                            pointToLayer: function(feature, latlng) {
-                                return L.circleMarker(latlng, styles(feature));
+                            filter: function(feature) {
+                                // 震度レベルごとにレイヤーを分ける
+                                var intensity = feature.properties.intensity;
+                                earthquakesByIntensity[intensity] = earthquakesByIntensity[intensity] || [];
+                                earthquakesByIntensity[intensity].push(feature);
+                                return false; // 先に全データを分類し、後でレイヤーとして追加
                             }
                         });
 
-                        earthquakes[file.name] = earthquakeLayer;
-                        baseLayerControl.addBaseLayer(earthquakeLayer, file.name);
-
-                        earthquakeLayer.on('add', function() {
-                            if (currentEarthquake && currentEarthquake !== file.name) {
-                                map.removeLayer(earthquakes[currentEarthquake]);
-                            }
-                            currentEarthquake = file.name;
+                        // 分類したデータをレイヤーに追加
+                        Object.keys(earthquakesByIntensity).forEach(intensity => {
+                            var layer = L.geoJSON(earthquakesByIntensity[intensity], {
+                                onEachFeature: function(feature, layer) {
+                                    layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
+                                    layer.setStyle(styles(feature));
+                                },
+                                pointToLayer: function(feature, latlng) {
+                                    return L.circleMarker(latlng, styles(feature));
+                                }
+                            });
+                            intensityLayerControl.addBaseLayer(layer, `Intensity ${intensity}`);
                         });
                     }).catch(error => console.error('Error loading GeoJSON:', error));
                 });
@@ -80,3 +82,4 @@
     </script>
 </body>
 </html>
+
