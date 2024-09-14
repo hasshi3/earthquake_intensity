@@ -6,135 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoJSON from GitHub</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-
-    <!-- ここにカスタムCSSを追加 -->
-    <style>
-        .leaflet-control-layers-expanded {
-            max-height: 400px; /* 行の高さに基づいて調整する */
-            overflow-y: scroll;
-        }
-    </style>
-
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
     <div id="myMap" style="height: 1200px;"></div>
-    <div id="intensity-control" style="position: absolute; top: 420px; right: 10px; z-index: 1000; background: white; padding: 10px;"> 
-        <select id="intensity-selector">
-            <option value="">震度を選択</option>
-            <option value="1">震度 1</option>
-            <option value="2">震度 2</option>
-            <option value="3">震度 3</option>
-            <option value="4">震度 4</option>
-            <option value="5-">震度 5弱</option>
-            <option value="5+">震度 5強</option>
-            <option value="6-">震度 6弱</option>
-            <option value="6+">震度 6強</option>
-            <option value="7">震度 7</option>
-        </select>
-    </div>
-    
-<script>
-    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-
-    var map = L.map('myMap', {
-        center: [35.1, 136.9],
-        zoom: 6,
-        layers: [osm]
-    });
-
-    const repoOwner = 'hasshi3';
-    const repoName = 'earthquake_intensity';
-    var earthquakes = {};
-    var currentEarthquake = null;
-
-    var baseLayerControl = L.control.layers({}, {}, {
-        position: 'topright',
-        collapsed: false
-    }).addTo(map);
-
-    fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
-        .then(response => response.json())
-        .then(files => {
-            files.filter(file => file.name.endsWith('.geojson')).sort((a, b) => b.name.localeCompare(a.name)).forEach(file => {
-                fetch(file.download_url).then(response => response.json()).then(geojson => {
-                    var earthquakeLayer = L.geoJSON(geojson, {
-                        onEachFeature: function(feature, layer) {
-                            if (feature.properties) {
-                                layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
-                                layer.setStyle(styles(feature));
-                            }
-                        },
-                        pointToLayer: function(feature, latlng) {
-                            return L.circleMarker(latlng, styles(feature));
-                        }
-                    });
-
-                    earthquakes[file.name] = earthquakeLayer;
-                    baseLayerControl.addBaseLayer(earthquakeLayer, file.name);
-
-                    earthquakeLayer.on('add', function() {
-                        if (currentEarthquake && currentEarthquake !== file.name) {
-                            map.removeLayer(earthquakes[currentEarthquake]);
-                        }
-                        currentEarthquake = file.name;
-                    });
-                }).catch(error => console.error('Error loading GeoJSON:', error));
-            });
-        }).catch(error => console.error('Error fetching file list from GitHub:', error));
-
-    document.getElementById('intensity-selector').addEventListener('change', function() {
-        var selectedIntensity = this.value;
-        Object.keys(earthquakes).forEach(key => {
-            map.removeLayer(earthquakes[key]);
-
-            var filteredGeoJSON = {
-                type: 'FeatureCollection',
-                features: earthquakes[key].toGeoJSON().features.filter(feature => feature.properties.intensity === selectedIntensity)
-            };
-
-            if (filteredGeoJSON.features.length > 0) {
-                var filteredLayer = L.geoJSON(filteredGeoJSON, {
-                    onEachFeature: function(feature, layer) {
-                        if (feature.properties) {
-                            layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
-                            layer.setStyle(styles(feature));
-                        }
-                    },
-                    pointToLayer: function(feature, latlng) {
-                        return L.circleMarker(latlng, styles(feature));
-                    }
-                });
-
-                earthquakes[key] = filteredLayer;
-                filteredLayer.addTo(map);
-            }
+    <script>
+        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         });
-    });
 
-    function styles(feature) {
-        return {
-            radius: 8,
-            fillColor: getColor(feature.properties.intensity),
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-        };
-    }
+        var map = L.map('myMap', {
+            center: [35.1, 136.9],
+            zoom: 6,
+            layers: [osm]
+        });
 
-    function getColor(intensity) {
-        const colors = {
-            "1": "#00ff00", "2": "#80ff00", "3": "#ffff00",
-            "4": "#ffc800", "5-": "#ff9100", "5+": "#ff0000",
-            "6-": "#c800ff", "6+": "#9100ff", "7": "#6a00ff"
-        };
-        return colors[intensity] || "#ff7800";
-    }
-</script>
+        const repoOwner = 'hasshi3';
+        const repoName = 'earthquake_intensity';
+        var earthquakes = {};
+        var currentEarthquake = null;
 
+        var baseLayerControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
 
+        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
+            .then(response => response.json())
+            .then(files => {
+                files.filter(file => file.name.endsWith('.geojson')).sort((a, b) => b.name.localeCompare(a.name)).forEach(file => {
+                    fetch(file.download_url).then(response => response.json()).then(geojson => {
+                        var earthquakeLayer = L.geoJSON(geojson, {
+                            onEachFeature: function(feature, layer) {
+                                if (feature.properties) {
+                                    layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
+                                    layer.setStyle(styles(feature));
+                                }
+                            },
+                            pointToLayer: function(feature, latlng) {
+                                return L.circleMarker(latlng, styles(feature));
+                            }
+                        });
+
+                        earthquakes[file.name] = earthquakeLayer;
+                        baseLayerControl.addBaseLayer(earthquakeLayer, file.name);
+
+                        earthquakeLayer.on('add', function() {
+                            if (currentEarthquake && currentEarthquake !== file.name) {
+                                map.removeLayer(earthquakes[currentEarthquake]);
+                            }
+                            currentEarthquake = file.name;
+                        });
+                    }).catch(error => console.error('Error loading GeoJSON:', error));
+                });
+            }).catch(error => console.error('Error fetching file list from GitHub:', error));
+
+        function styles(feature) {
+            return {
+                radius: 8,
+                fillColor: getColor(feature.properties.intensity),
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+        }
+
+        function getColor(intensity) {
+            const colors = {
+                "1": "#00ff00", "2": "#80ff00", "3": "#ffff00",
+                "4": "#ffc800", "5-": "#ff9100", "5+": "#ff0000",
+                "6-": "#c800ff", "6+": "#9100ff", "7": "#6a00ff"
+            };
+            return colors[intensity] || "#ff7800";
+        }
+    </script>
 </body>
 </html>
+
