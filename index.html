@@ -9,39 +9,79 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
+    <div style="position: absolute; top: 10px; right: 10px; z-index: 1000;">
+        <select id="intensity-selector">
+            <option value="all">すべての震度</option>
+            <option value="1">震度 1</option>
+            <option value="2">震度 2</option>
+            <option value="3">震度 3</option>
+            <option value="4">震度 4</option>
+            <option value="5-">震度 5弱</option>
+            <option value="5+">震度 5強</option>
+            <option value="6-">震度 6弱</option>
+            <option value="6+">震度 6強</option>
+            <option value="7">震度 7</option>
+        </select>
+    </div>
     <div id="myMap" style="height: 1200px;"></div>
-<script>
-    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+    <script>
+        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
 
-    var map = L.map('myMap', {
-        center: [35.1, 136.9],
-        zoom: 6,
-        layers: [osm]
-    });
+        var map = L.map('myMap', {
+            center: [35.1, 136.9],
+            zoom: 6,
+            layers: [osm]
+        });
 
-    const repoOwner = 'hasshi3';
-    const repoName = 'earthquake_intensity';
-    var earthquakes = {};
-    var currentEarthquake = null;
+        const repoOwner = 'hasshi3';
+        const repoName = 'earthquake_intensity';
+        var earthquakes = {};
+        var currentEarthquake = null;
 
-    var baseLayerControl = L.control.layers({}, {}, {
-        position: 'topright',
-        collapsed: false
-    }).addTo(map);
+        var baseLayerControl = L.control.layers({}, {}, {
+            position: 'topright',
+            collapsed: false
+        }).addTo(map);
 
-    document.getElementById('intensity-selector').addEventListener('change', function() {
-        selectedIntensity = this.value;
-        updateEarthquakeLayers();
-    });
+        document.getElementById('intensity-selector').addEventListener('change', function() {
+            selectedIntensity = this.value;
+            updateEarthquakeLayers();
+        });
 
-    fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
-        .then(response => response.json())
-        .then(files => {
-            files.filter(file => file.name.endsWith('.geojson')).forEach(file => {
-                fetch(file.download_url).then(response => response.json()).then(geojson => {
+        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
+            .then(response => response.json())
+            .then(files => {
+                files.filter(file => file.name.endsWith('.geojson')).forEach(file => {
+                    fetch(file.download_url).then(response => response.json()).then(geojson => {
+                        var earthquakeLayer = L.geoJSON(geojson, {
+                            onEachFeature: function(feature, layer) {
+                                if (feature.properties) {
+                                    layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
+                                    layer.setStyle(styles(feature));
+                                }
+                            },
+                            pointToLayer: function(feature, latlng) {
+                                return L.circleMarker(latlng, styles(feature));
+                            }
+                        });
+
+                        earthquakes[file.name] = earthquakeLayer;
+                        earthquakes[file.name].url = file.download_url;
+                        baseLayerControl.addBaseLayer(earthquakeLayer, file.name);
+                    }).catch(error => console.error('Error loading GeoJSON:', error));
+                });
+            }).catch(error => console.error('Error fetching file list from GitHub:', error));
+
+        function updateEarthquakeLayers() {
+            Object.keys(earthquakes).forEach(key => {
+                map.removeLayer(earthquakes[key]);
+                fetch(earthquakes[key].url).then(response => response.json()).then(geojson => {
                     var earthquakeLayer = L.geoJSON(geojson, {
+                        filter: function(feature) {
+                            return selectedIntensity === 'all' || feature.properties.intensity === selectedIntensity;
+                        },
                         onEachFeature: function(feature, layer) {
                             if (feature.properties) {
                                 layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
@@ -52,59 +92,32 @@
                             return L.circleMarker(latlng, styles(feature));
                         }
                     });
-
-                    earthquakes[file.name] = earthquakeLayer;
-                    earthquakes[file.name].url = file.download_url;
-                    baseLayerControl.addBaseLayer(earthquakeLayer, file.name);
-                }).catch(error => console.error('Error loading GeoJSON:', error));
-            });
-        }).catch(error => console.error('Error fetching file list from GitHub:', error));
-
-    function updateEarthquakeLayers() {
-        Object.keys(earthquakes).forEach(key => {
-            map.removeLayer(earthquakes[key]);
-            fetch(earthquakes[key].url).then(response => response.json()).then(geojson => {
-                var earthquakeLayer = L.geoJSON(geojson, {
-                    filter: function(feature) {
-                        return selectedIntensity === 'all' || feature.properties.intensity === selectedIntensity;
-                    },
-                    onEachFeature: function(feature, layer) {
-                        if (feature.properties) {
-                            layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
-                            layer.setStyle(styles(feature));
-                        }
-                    },
-                    pointToLayer: function(feature, latlng) {
-                        return L.circleMarker(latlng, styles(feature));
-                    }
+                    earthquakeLayer.addTo(map);
+                    earthquakes[key] = earthquakeLayer;
                 });
-                earthquakeLayer.addTo(map);
-                earthquakes[key] = earthquakeLayer;
             });
-        });
-    }
+        }
 
-    function styles(feature) {
-        return {
-            radius: 8,
-            fillColor: getColor(feature.properties.intensity),
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-        };
-    }
+        function styles(feature) {
+            return {
+                radius: 8,
+                fillColor: getColor(feature.properties.intensity),
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+        }
 
-    function getColor(intensity) {
-        const colors = {
-            "1": "#00ff00", "2": "#80ff00", "3": "#ffff00",
-            "4": "#ffc800", "5-": "#ff9100", "5+": "#ff0000",
-            "6-": "#c800ff", "6+": "#9100ff", "7": "#6a00ff"
-        };
-        return colors[intensity] || "#ff7800";
-    }
-</script>
-
-
-
+        function getColor(intensity) {
+            const colors = {
+                "1": "#00ff00", "2": "#80ff00", "3": "#ffff00",
+                "4": "#ffc800", "5-": "#ff9100", "5+": "#ff0000",
+                "6-": "#c800ff", "6+": "#9100ff", "7": "#6a00ff"
+            };
+            return colors[intensity] || "#ff7800";
+        }
+    </script>
+</body>
+</html>
 
