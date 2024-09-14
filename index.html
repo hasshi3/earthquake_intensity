@@ -24,11 +24,10 @@
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
         var earthquakes = {};
+        var currentLayers = [];
 
-        // 地震選択用のレイヤーコントロール（ダミーで初期化）
+        // 地震選択用のレイヤーコントロール
         var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
-        // 震度レイヤー用のコントロール
-        var intensityControl = L.control.layers({}, {}, { collapsed: false, position: 'topright' }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
@@ -60,17 +59,10 @@
                         });
 
                         earthquakes[file.name] = earthquakeIntensityLayers;
+                        earthquakeControl.addBaseLayer(L.layerGroup(Object.values(earthquakeIntensityLayers)), file.name);
                     }).catch(error => console.error('Error loading GeoJSON:', error));
                 });
-
-                updateEarthquakeControl();
             }).catch(error => console.error('Error fetching file list from GitHub:', error));
-
-        function updateEarthquakeControl() {
-            Object.keys(earthquakes).forEach(name => {
-                earthquakeControl.addBaseLayer(earthquakes[name]["震度3"], name);  // 例として震度3のレイヤーを追加
-            });
-        }
 
         function styles(feature) {
             let intensityColor = feature.properties ? getColor(feature.properties.intensity) : "#ff7800";
