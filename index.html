@@ -52,6 +52,7 @@
             .then(files => {
                 files
                     .filter(file => file.name.endsWith('.geojson'))
+                    .sort((a, b) => b.name.localeCompare(a.name))  // ここで降順に並び替え
                     .forEach(file => {
                         fetch(file.download_url)
                             .then(response => response.json())
@@ -80,7 +81,7 @@
                                     }
                                 });
 
-                                // layer.addTo(map);
+                                // layer.addTo(map);　//地図にレイヤーを追加しない
                             })
                             .catch(error => console.error('Error loading GeoJSON:', error));
                     });
