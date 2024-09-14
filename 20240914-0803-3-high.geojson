@@ -1,0 +1,197 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.85,
+          31.2
+        ]
+      },
+      "properties": {
+        "area_code": "771",
+        "area_name": "鹿児島県大隅",
+        "city_code": "4649000",
+        "city_name": "錦江町",
+        "station_code": "4649020",
+        "station_name": "錦江町田代支所",
+        "station_furigana": "きんこうちょうたしろししょ",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.95,
+          31.34
+        ]
+      },
+      "properties": {
+        "area_code": "771",
+        "area_name": "鹿児島県大隅",
+        "city_code": "4649200",
+        "city_name": "肝付町",
+        "station_code": "4649231",
+        "station_name": "肝付町新富",
+        "station_furigana": "きもつきちょうにいとみ",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "地方公共団体",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.92,
+          29.99
+        ]
+      },
+      "properties": {
+        "area_code": "774",
+        "area_name": "鹿児島県十島村",
+        "city_code": "4630400",
+        "city_name": "鹿児島十島村",
+        "station_code": "4630444",
+        "station_name": "鹿児島十島村口之島出張所",
+        "station_furigana": "かごしまとしまむらくちのしましゅっちょうしょ",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "地方公共団体",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.88,
+          30.35
+        ]
+      },
+      "properties": {
+        "area_code": "776",
+        "area_name": "鹿児島県種子島",
+        "city_code": "4650200",
+        "city_name": "南種子町",
+        "station_code": "4650220",
+        "station_name": "南種子町西之",
+        "station_furigana": "みなみたねちょうにしの",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.9,
+          30.41
+        ]
+      },
+      "properties": {
+        "area_code": "776",
+        "area_name": "鹿児島県種子島",
+        "city_code": "4650200",
+        "city_name": "南種子町",
+        "station_code": "4650231",
+        "station_name": "南種子町中之上",
+        "station_furigana": "みなみたねちょうなかのかみ",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "地方公共団体",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.51,
+          30.24
+        ]
+      },
+      "properties": {
+        "area_code": "777",
+        "area_name": "鹿児島県屋久島",
+        "city_code": "4650500",
+        "city_name": "屋久島町",
+        "station_code": "4650502",
+        "station_name": "屋久島町平内",
+        "station_furigana": "やくしまちょうひらうち",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "気象庁",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.56,
+          30.24
+        ]
+      },
+      "properties": {
+        "area_code": "777",
+        "area_name": "鹿児島県屋久島",
+        "city_code": "4650500",
+        "city_name": "屋久島町",
+        "station_code": "4650521",
+        "station_name": "屋久島町尾之間",
+        "station_furigana": "やくしまちょうおのあいだ",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.58,
+          30.42
+        ]
+      },
+      "properties": {
+        "area_code": "777",
+        "area_name": "鹿児島県屋久島",
+        "city_code": "4650500",
+        "city_name": "屋久島町",
+        "station_code": "4650522",
+        "station_name": "屋久島町宮之浦",
+        "station_furigana": "やくしまちょうみやのうら",
+        "pref_name": "鹿児島県",
+        "pref_code": 46,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "3",
+        "earthquake_time": "20240914-0803"
+      }
+    }
+  ]
+}
