@@ -35,7 +35,10 @@
         var earthquakes = {};
         var currentEarthquake = null;
 
-        var baseLayerControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+        var baseLayerControl = L.control.layers({}, {}, {
+            position: 'topright',
+            collapsed: false // このオプションにより、レイヤー制御は常に展開された状態となります。
+        }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
