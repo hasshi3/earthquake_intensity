@@ -33,7 +33,10 @@
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
-                files.filter(file => file.name.endsWith('.geojson')).forEach(file => {
+                // Sort files in descending order based on file name
+                files.filter(file => file.name.endsWith('.geojson'))
+                .sort((a, b) => b.name.localeCompare(a.name))
+                .forEach(file => {
                     fetch(file.download_url).then(response => response.json()).then(geojson => {
                         var earthquakeLayer = L.geoJSON(geojson, {
                             onEachFeature: function(feature, layer) {
@@ -52,6 +55,7 @@
                     }).catch(error => console.error('Error loading GeoJSON:', error));
                 });
             }).catch(error => console.error('Error fetching file list from GitHub:', error));
+
 
         function styles(feature) {
             return {
