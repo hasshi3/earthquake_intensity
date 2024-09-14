@@ -25,67 +25,53 @@
         const repoName = 'earthquake_intensity';
         var earthquakes = {};
         var currentEarthquake = null;
-        var intensityControl = L.control.layers({}, {}, { collapsed: false, position: 'topright' }).addTo(map);
+        var intensityLayers = {};
+        var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
                 files.filter(file => file.name.endsWith('.geojson')).sort((a, b) => b.name.localeCompare(a.name)).forEach(file => {
                     fetch(file.download_url).then(response => response.json()).then(geojson => {
-                        const earthquakeIntensityLayers = {};
-                        const intensities = ["1", "2", "3", "4", "5-", "5+", "6-", "6+", "7"];
-
-                        intensities.forEach(intensity => {
-                            earthquakeIntensityLayers[`震度${intensity}`] = L.layerGroup();
-                        });
-
-                        const layer = L.geoJSON(geojson, {
+                        var earthquakeLayer = L.geoJSON(geojson, {
                             onEachFeature: function(feature, layer) {
                                 if (feature.properties && feature.properties.station_name) {
                                     layer.bindPopup(feature.properties.station_name);
                                 }
-                            },
-                            pointToLayer: function(feature, latlng) {
-                                return L.circleMarker(latlng, styles(feature));
-                            },
-                            style: styles
+                            }
                         });
 
-                        layer.eachLayer(function(subLayer) {
-                            const intensity = subLayer.feature.properties.intensity;
-                            earthquakeIntensityLayers[`震度${intensity}`].addLayer(subLayer);
+                        earthquakes[file.name] = {
+                            data: earthquakeLayer,
+                            intensities: {}
+                        };
+
+                        geojson.features.forEach(feature => {
+                            const intensity = feature.properties.intensity;
+                            if (!earthquakes[file.name].intensities[intensity]) {
+                                earthquakes[file.name].intensities[intensity] = L.layerGroup();
+                            }
+                            earthquakes[file.name].intensities[intensity].addLayer(L.geoJSON(feature));
                         });
 
-                        earthquakes[file.name] = earthquakeIntensityLayers;
+                        earthquakeControl.addBaseLayer(earthquakeLayer, file.name);
+
                         map.on('overlayadd', function(e) {
-                            if (e.layer === layer) {
+                            if (e.layer === earthquakeLayer) {
                                 if (currentEarthquake) {
-                                    Object.keys(earthquakes[currentEarthquake]).forEach(intensity => {
-                                        map.removeLayer(earthquakes[currentEarthquake][intensity]);
+                                    Object.keys(earthquakes[currentEarthquake].intensities).forEach(intensity => {
+                                        map.removeLayer(earthquakes[currentEarthquake].intensities[intensity]);
                                     });
                                 }
                                 currentEarthquake = file.name;
-                                Object.keys(earthquakeIntensityLayers).forEach(intensity => {
-                                    intensityControl.addOverlay(earthquakeIntensityLayers[intensity], `震度${intensity}`);
+                                Object.keys(earthquakes[currentEarthquake].intensities).forEach(intensity => {
+                                    map.addLayer(earthquakes[currentEarthquake].intensities[intensity]);
                                 });
                             }
                         });
                     }).catch(error => console.error('Error loading GeoJSON:', error));
                 });
             }).catch(error => console.error('Error fetching file list from GitHub:', error));
-
-        function styles(feature) {
-            let intensityColor = feature.properties ? getColor(feature.properties.intensity) : "#ff7800";
-            return { radius: 8, fillColor: intensityColor, color: "#000", weight: 1, opacity: 1, fillOpacity: 0.6 };
-        }
-
-        function getColor(intensity) {
-            const colors = {
-                "1": "green", "2": "yellow", "3": "orange", "4": "red",
-                "5-": "purple", "5+": "darkred", "6-": "blue", "6+": "black", "7": "darkblue"
-            };
-            return colors[intensity] || "#ff7800";
-        }
     </script>
 </body>
 </html>
