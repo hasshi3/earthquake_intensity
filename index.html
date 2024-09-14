@@ -89,8 +89,27 @@
         var selectedIntensity = this.value;
         Object.keys(earthquakes).forEach(key => {
             map.removeLayer(earthquakes[key]);
-            if (earthquakes[key].toGeoJSON().features.some(feature => feature.properties.intensity === selectedIntensity)) {
-                map.addLayer(earthquakes[key]);
+
+            var filteredGeoJSON = {
+                type: 'FeatureCollection',
+                features: earthquakes[key].toGeoJSON().features.filter(feature => feature.properties.intensity === selectedIntensity)
+            };
+
+            if (filteredGeoJSON.features.length > 0) {
+                var filteredLayer = L.geoJSON(filteredGeoJSON, {
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties) {
+                            layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
+                            layer.setStyle(styles(feature));
+                        }
+                    },
+                    pointToLayer: function(feature, latlng) {
+                        return L.circleMarker(latlng, styles(feature));
+                    }
+                });
+
+                earthquakes[key] = filteredLayer;
+                filteredLayer.addTo(map);
             }
         });
     });
@@ -115,6 +134,7 @@
         return colors[intensity] || "#ff7800";
     }
 </script>
+
 
 </body>
 </html>
