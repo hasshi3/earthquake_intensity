@@ -1,0 +1,29 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.57,
+          33.22
+        ]
+      },
+      "properties": {
+        "area_code": "622",
+        "area_name": "愛媛県南予",
+        "city_code": "3820300",
+        "city_name": "宇和島市",
+        "station_code": "3820320",
+        "station_name": "宇和島市丸穂",
+        "station_furigana": "うわじましまるお",
+        "pref_name": "愛媛県",
+        "pref_code": 38,
+        "affiliation": "防災科学技術研究所",
+        "intensity": "1",
+        "earthquake_time": "20240915-0519"
+      }
+    }
+  ]
+}
