@@ -24,10 +24,7 @@
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
         var earthquakes = {};
-        var intensityControls = {};
-
-        // 地震選択用のレイヤーコントロール
-        var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+        var currentEarthquake = null;
         var intensityControl = L.control.layers({}, {}, { collapsed: false, position: 'topright' }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
@@ -60,27 +57,22 @@
                         });
 
                         earthquakes[file.name] = earthquakeIntensityLayers;
-                        earthquakeControl.addBaseLayer(layer, file.name);
-
-                        // 地震選択時に震度レイヤーを更新
-                        map.on('overlayadd', function(event) {
-                            if (event.name === file.name) {
-                                updateIntensityLayers(file.name);
+                        map.on('overlayadd', function(e) {
+                            if (e.layer === layer) {
+                                if (currentEarthquake) {
+                                    Object.keys(earthquakes[currentEarthquake]).forEach(intensity => {
+                                        map.removeLayer(earthquakes[currentEarthquake][intensity]);
+                                    });
+                                }
+                                currentEarthquake = file.name;
+                                Object.keys(earthquakeIntensityLayers).forEach(intensity => {
+                                    intensityControl.addOverlay(earthquakeIntensityLayers[intensity], `震度${intensity}`);
+                                });
                             }
                         });
                     }).catch(error => console.error('Error loading GeoJSON:', error));
                 });
             }).catch(error => console.error('Error fetching file list from GitHub:', error));
-
-        function updateIntensityLayers(selectedEarthquake) {
-            Object.keys(intensityControls).forEach(intensity => {
-                map.removeControl(intensityControls[intensity]);
-            });
-            intensityControls = {};
-            Object.keys(earthquakes[selectedEarthquake]).forEach(intensity => {
-                intensityControls[intensity] = L.control.layers({}, { [intensity]: earthquakes[selectedEarthquake][intensity] }, { collapsed: false }).addTo(map);
-            });
-        }
 
         function styles(feature) {
             let intensityColor = feature.properties ? getColor(feature.properties.intensity) : "#ff7800";
