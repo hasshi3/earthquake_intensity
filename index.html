@@ -24,36 +24,21 @@
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
 
-        // ベースマップとオーバーレイマップの設定
-        var baseMaps = {
-            "OpenStreetMap": osm
-        };
-
-        var overlayMaps = {};  // GeoJSONファイルごとのオーバーレイマップ
-        var intensityLayers = {
-            "震度1": L.layerGroup(),
-            "震度2": L.layerGroup(),
-            "震度3": L.layerGroup(),
-            "震度4": L.layerGroup(),
-            "震度5-": L.layerGroup(),
-            "震度5+": L.layerGroup(),
-            "震度6-": L.layerGroup(),
-            "震度6+": L.layerGroup(),
-            "震度7": L.layerGroup()
-        };
-
-        // レイヤーコントロールを一度だけ初期化
-        var fileLayerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false, position: 'topright' }).addTo(map);
-        var intensityLayerControl = L.control.layers({}, intensityLayers, { collapsed: false, position: 'topright' }).addTo(map);
-
         // GitHub APIを使用してリポジトリ内の.geojsonファイルを取得
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
                 files
                     .filter(file => file.name.endsWith('.geojson'))
-                    .sort((a, b) => b.name.localeCompare(a.name))  // ここで降順に並び替え
+                    .sort((a, b) => b.name.localeCompare(a.name))  // 降順に並び替え
                     .forEach(file => {
+                        const earthquakeIntensityLayers = {};
+                        const intensities = ["1", "2", "3", "4", "5-", "5+", "6-", "6+", "7"];
+
+                        intensities.forEach(intensity => {
+                            earthquakeIntensityLayers[`震度${intensity}`] = L.layerGroup();
+                        });
+
                         fetch(file.download_url)
                             .then(response => response.json())
                             .then(geojson => {
@@ -69,19 +54,16 @@
                                     style: styles
                                 });
 
-                                // 各GeoJSONファイルをレイヤーコントロールに追加
-                                overlayMaps[file.name] = layer;
-                                fileLayerControl.addOverlay(layer, file.name);
-
-                                // 各震度ごとにフィーチャを追加
+                                // 各震度ごとにフィーチャを地震固有のレイヤーに追加
                                 layer.eachLayer(function(subLayer) {
                                     const intensity = subLayer.feature.properties.intensity;
-                                    if (intensityLayers[`震度${intensity}`]) {
-                                        intensityLayers[`震度${intensity}`].addLayer(subLayer);
+                                    if (earthquakeIntensityLayers[`震度${intensity}`]) {
+                                        earthquakeIntensityLayers[`震度${intensity}`].addLayer(subLayer);
                                     }
                                 });
 
-                                // layer.addTo(map);　//地図にレイヤーを追加しない
+                                // 地震ごとのレイヤーコントロールに追加
+                                var fileLayerControl = L.control.layers({}, earthquakeIntensityLayers, { collapsed: false }).addTo(map);
                             })
                             .catch(error => console.error('Error loading GeoJSON:', error));
                     });
