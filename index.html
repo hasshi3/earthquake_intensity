@@ -23,14 +23,18 @@
 
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
+        var selectedEarthquakeLayers = null;
 
-        // GitHub APIを使用してリポジトリ内の.geojsonファイルを取得
+        // 震度レイヤーの共通制御を作成
+        var intensityLayerControl = L.control.layers({}, {}, { collapsed: false, position: 'topright' }).addTo(map);
+
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
+                var earthquakes = {};
                 files
                     .filter(file => file.name.endsWith('.geojson'))
-                    .sort((a, b) => b.name.localeCompare(a.name))  // 降順に並び替え
+                    .sort((a, b) => b.name.localeCompare(a.name))
                     .forEach(file => {
                         const earthquakeIntensityLayers = {};
                         const intensities = ["1", "2", "3", "4", "5-", "5+", "6-", "6+", "7"];
@@ -54,7 +58,6 @@
                                     style: styles
                                 });
 
-                                // 各震度ごとにフィーチャを地震固有のレイヤーに追加
                                 layer.eachLayer(function(subLayer) {
                                     const intensity = subLayer.feature.properties.intensity;
                                     if (earthquakeIntensityLayers[`震度${intensity}`]) {
@@ -62,54 +65,33 @@
                                     }
                                 });
 
-                                // 地震ごとのレイヤーコントロールに追加
-                                var fileLayerControl = L.control.layers({}, earthquakeIntensityLayers, { collapsed: false }).addTo(map);
+                                earthquakes[file.name] = earthquakeIntensityLayers;
                             })
                             .catch(error => console.error('Error loading GeoJSON:', error));
                     });
+                updateLayerControl(earthquakes);
             })
             .catch(error => console.error('Error fetching file list from GitHub:', error));
 
-        function styles(feature) {
-            let intensityColor;
-            if (feature.properties && feature.properties.intensity) {
-                switch (feature.properties.intensity) {
-                    case "1": intensityColor = "green"; break;
-                    case "2": intensityColor = "yellow"; break;
-                    case "3": intensityColor = "orange"; break;
-                    case "4": intensityColor = "red"; break;
-                    case "5-": intensityColor = "purple"; break;
-                    case "5+": intensityColor = "darkred"; break;
-                    case "6-": intensityColor = "blue"; break;
-                    case "6+": intensityColor = "black"; break;
-                    case "7": intensityColor = "darkblue"; break;
-                    default: intensityColor = "#ff7800"; // デフォルト色
-                }
-            } else {
-                intensityColor = "#ff7800"; // デフォルト色
-            }
+        function updateLayerControl(earthquakes) {
+            // 地震の選択制御をここで追加
+            var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+            Object.keys(earthquakes).forEach(name => {
+                earthquakeControl.addBaseLayer(earthquakes[name], name);
+            });
+        }
 
-            switch (feature.geometry.type) {
-                case "Point": return {
-                    radius: 8,
-                    fillColor: intensityColor,
-                    color: "#000",
-                    weight: 1,
-                    opacity: 1,
-                    fillOpacity: 0.6,
-                };
-                case "LineString": return {
-                    color: "#4f6bdb",
-                    lineCap: 'square',
-                    weight: 5,
-                    opacity: .8
-                };
-                case "Polygon": return {
-                    color: "#34ccea8b",
-                    fillColor: "#ea3483"
-                };
-                default: return {};
-            }
+        function styles(feature) {
+            let intensityColor = feature.properties ? getColor(feature.properties.intensity) : "#ff7800";
+            return { radius: 8, fillColor: intensityColor, color: "#000", weight: 1, opacity: 1, fillOpacity: 0.6 };
+        }
+
+        function getColor(intensity) {
+            const colors = {
+                "1": "green", "2": "yellow", "3": "orange", "4": "red",
+                "5-": "purple", "5+": "darkred", "6-": "blue", "6+": "black", "7": "darkblue"
+            };
+            return colors[intensity] || "#ff7800";
         }
     </script>
 </body>
