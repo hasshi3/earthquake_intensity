@@ -28,7 +28,7 @@
 
         var baseLayerControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
 
-        fetch(https://api.github.com/repos/${repoOwner}/${repoName}/contents)
+        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
                 files.filter(file => file.name.endsWith('.geojson')).sort((a, b) => b.name.localeCompare(a.name)).forEach(file => {
@@ -36,7 +36,7 @@
                         var earthquakeLayer = L.geoJSON(geojson, {
                             onEachFeature: function(feature, layer) {
                                 if (feature.properties) {
-                                    layer.bindPopup(Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity});
+                                    layer.bindPopup(`Station: ${feature.properties.station_name} <br> Intensity: ${feature.properties.intensity}`);
                                     layer.setStyle(styles(feature));
                                 }
                             },
@@ -80,4 +80,3 @@
     </script>
 </body>
 </html>
-
