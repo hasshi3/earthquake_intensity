@@ -23,19 +23,18 @@
 
         const repoOwner = 'hasshi3';
         const repoName = 'earthquake_intensity';
-        var selectedEarthquakeLayers = null;
+        var earthquakes = {};
 
-        // 震度レイヤーの共通制御を作成
-        var intensityLayerControl = L.control.layers({}, {}, { collapsed: false, position: 'topright' }).addTo(map);
+        // 地震選択用のレイヤーコントロール（ダミーで初期化）
+        var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+        // 震度レイヤー用のコントロール
+        var intensityControl = L.control.layers({}, {}, { collapsed: false, position: 'topright' }).addTo(map);
 
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents`)
             .then(response => response.json())
             .then(files => {
-                var earthquakes = {};
-                files
-                    .filter(file => file.name.endsWith('.geojson'))
-                    .sort((a, b) => b.name.localeCompare(a.name))
-                    .forEach(file => {
+                files.filter(file => file.name.endsWith('.geojson')).sort((a, b) => b.name.localeCompare(a.name)).forEach(file => {
+                    fetch(file.download_url).then(response => response.json()).then(geojson => {
                         const earthquakeIntensityLayers = {};
                         const intensities = ["1", "2", "3", "4", "5-", "5+", "6-", "6+", "7"];
 
@@ -43,41 +42,33 @@
                             earthquakeIntensityLayers[`震度${intensity}`] = L.layerGroup();
                         });
 
-                        fetch(file.download_url)
-                            .then(response => response.json())
-                            .then(geojson => {
-                                const layer = L.geoJSON(geojson, {
-                                    onEachFeature: function(feature, layer) {
-                                        if (feature.properties && feature.properties.station_name) {
-                                            layer.bindPopup(feature.properties.station_name);
-                                        }
-                                    },
-                                    pointToLayer: function(feature, latlng) {
-                                        return L.circleMarker(latlng, styles(feature));
-                                    },
-                                    style: styles
-                                });
+                        const layer = L.geoJSON(geojson, {
+                            onEachFeature: function(feature, layer) {
+                                if (feature.properties && feature.properties.station_name) {
+                                    layer.bindPopup(feature.properties.station_name);
+                                }
+                            },
+                            pointToLayer: function(feature, latlng) {
+                                return L.circleMarker(latlng, styles(feature));
+                            },
+                            style: styles
+                        });
 
-                                layer.eachLayer(function(subLayer) {
-                                    const intensity = subLayer.feature.properties.intensity;
-                                    if (earthquakeIntensityLayers[`震度${intensity}`]) {
-                                        earthquakeIntensityLayers[`震度${intensity}`].addLayer(subLayer);
-                                    }
-                                });
+                        layer.eachLayer(function(subLayer) {
+                            const intensity = subLayer.feature.properties.intensity;
+                            earthquakeIntensityLayers[`震度${intensity}`].addLayer(subLayer);
+                        });
 
-                                earthquakes[file.name] = earthquakeIntensityLayers;
-                            })
-                            .catch(error => console.error('Error loading GeoJSON:', error));
-                    });
-                updateLayerControl(earthquakes);
-            })
-            .catch(error => console.error('Error fetching file list from GitHub:', error));
+                        earthquakes[file.name] = earthquakeIntensityLayers;
+                    }).catch(error => console.error('Error loading GeoJSON:', error));
+                });
 
-        function updateLayerControl(earthquakes) {
-            // 地震の選択制御をここで追加
-            var earthquakeControl = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+                updateEarthquakeControl();
+            }).catch(error => console.error('Error fetching file list from GitHub:', error));
+
+        function updateEarthquakeControl() {
             Object.keys(earthquakes).forEach(name => {
-                earthquakeControl.addBaseLayer(earthquakes[name], name);
+                earthquakeControl.addBaseLayer(earthquakes[name]["震度3"], name);  // 例として震度3のレイヤーを追加
             });
         }
 
