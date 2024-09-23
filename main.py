@@ -1,83 +1,86 @@
-from google.cloud import storage
+import os
 import json
+import base64
+from flask import Flask, request
+from google.cloud import storage
 import psycopg2
-from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Flask is running on Cloud Run!"
+@app.route("/", methods=["POST"])
+def handle_pubsub_message():
+    """Pub/SubからのHTTP Pushメッセージを処理"""
+    envelope = request.get_json()
 
-@app.route('/run_geojson')
-def run_geojson():
-    try:
-        reflesh_stations_geojson()
-        return jsonify({"status": "success", "message": "GeoJSON processed successfully."})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
+    if not envelope:
+        return ("Bad Request: No Pub/Sub message received", 400)
 
-def reflesh_stations_geojson():
-    # GCSからファイルを取得
-    storage_client = storage.Client()
-    bucket = storage_client.get_bucket('your-bucket-name')  # GCSバケット名
-    blob = bucket.blob('stations/stations.geojson')  # ファイルパス
-    content = blob.download_as_text()
+    # Pub/Sub メッセージのデコード
+    pubsub_message = envelope.get("message", {})
+    if "data" in pubsub_message:
+        message_data = base64.b64decode(pubsub_message["data"]).decode("utf-8")
+        message_json = json.loads(message_data)
 
-    # GeoJSONを解析
-    stations_data = json.loads(content)
+        # GCS バケット名とファイル名を取得
+        bucket_name = message_json['bucket']
+        file_name = message_json['name']
 
-    # PostgreSQLデータベースへの接続
+        # ファイルが "results/" フォルダ内の ".geojson" ファイルか確認
+        if file_name.startswith('results/') and file_name.endswith('.geojson'):
+            process_geojson_file(bucket_name, file_name)
+
+    return ("", 204)
+
+
+def process_geojson_file(bucket_name, file_name):
+    """GCSのGeoJSONファイルを取得し、PostgreSQLに登録"""
+    # GCS クライアントを作成
+    client = storage.Client()
+    bucket = client.get_bucket(bucket_name)
+    blob = bucket.blob(file_name)
+
+    # GeoJSONファイルをダウンロード
+    geojson_data = blob.download_as_string()
+    geojson_dict = json.loads(geojson_data)
+
+    # PostgreSQLに接続
     conn = psycopg2.connect(
-        dbname='your_db_name',
-        user='your_db_user',
-        password='your_password',
-        host='your_db_host',
-        port='your_db_port'
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASS"),
+        port="5432"
     )
     cur = conn.cursor()
 
-    # データベースにstationsのデータを挿入
+    # データを挿入するクエリ
     insert_query = """
-    INSERT INTO Stations (area_code, area_name, city_code, city_name, station_code, station_name, station_furigana, pref_name, pref_code, affiliation, latitude, longitude)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (station_code) DO UPDATE
-    SET area_code = EXCLUDED.area_code,
-        area_name = EXCLUDED.area_name,
-        city_code = EXCLUDED.city_code,
-        city_name = EXCLUDED.city_name,
-        station_name = EXCLUDED.station_name,
-        station_furigana = EXCLUDED.station_furigana,
-        pref_name = EXCLUDED.pref_name,
-        pref_code = EXCLUDED.pref_code,
-        affiliation = EXCLUDED.affiliation,
-        latitude = EXCLUDED.latitude,
-        longitude = EXCLUDED.longitude;
+        INSERT INTO earthquakes (event_time, magnitude, depth, latitude, longitude, location_description, geom)
+        VALUES (%s, %s, %s, %s, %s, %s, ST_SetSRID(ST_MakePoint(%s, %s), 4326))
     """
-
-    # GeoJSONのデータをデータベースに挿入
-    for feature in stations_data['features']:
+    
+    # GeoJSONデータの各フィーチャを処理し、PostgreSQLに挿入
+    for feature in geojson_dict['features']:
         properties = feature['properties']
-        geometry = feature['geometry']
-        cur.execute(insert_query, (
-            properties['area_code'],
-            properties['area_name'],
-            properties['city_code'],
-            properties['city_name'],
-            properties['station_code'],
-            properties['station_name'],
-            properties['station_furigana'],
-            properties['pref_name'],
-            properties['pref_code'],
-            properties['affiliation'],
-            geometry['coordinates'][1],  # latitude
-            geometry['coordinates'][0]   # longitude
-        ))
-
+        geometry = feature['geometry']['coordinates']
+        
+        event_time = properties['time']
+        magnitude = properties['mag']
+        depth = properties['depth']
+        latitude = geometry[1]
+        longitude = geometry[0]
+        location_description = properties['place']
+        
+        data = (event_time, magnitude, depth, latitude, longitude, location_description, longitude, latitude)
+        cur.execute(insert_query, data)
+    
+    # トランザクションのコミットと接続のクローズ
     conn.commit()
     cur.close()
     conn.close()
 
-# メイン処理
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+
+if __name__ == "__main__":
+    # Flaskアプリケーションを起動
+    app.run(debug=True, host="0.0.0.0", port=int(os.getenv("PORT", 8080)))
+
