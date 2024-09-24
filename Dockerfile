@@ -11,5 +11,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # アプリケーションコードをコピー
 COPY . .
 
-# コンテナのエントリーポイント
-CMD ["gunicorn", "-b", ":8080", "main:app"]
+# Gunicornの設定で、タイムアウトとワーカー数を指定
+CMD ["gunicorn", "-b", ":8080", "--timeout", "120", "--workers", "2", "main:app"]
